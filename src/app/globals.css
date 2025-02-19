@@ -3,19 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background-start: #f8fafc;
+  --background-end: #e2e8f0;
+  --glass-bg: rgba(255, 255, 255, 0.7);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--background-start), var(--background-end));
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.glass-container {
+  @apply bg-white bg-opacity-70 backdrop-blur-md rounded-xl shadow-lg;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  transition: all 0.3s ease-in-out;
+}
+
+.glass-container:hover {
+  @apply shadow-xl;
+  transform: translateY(-2px);
+}
+
+.prose-custom {
+  @apply prose-h1:text-gray-900 prose-h2:text-gray-900 prose-h3:text-gray-900 prose-h4:text-gray-900;
+  @apply prose-p:text-gray-600 prose-a:text-blue-600 hover:prose-a:text-blue-700;
+  @apply prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md;
+  @apply prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-img:rounded-lg;
 }
